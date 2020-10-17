@@ -1,4 +1,8 @@
 #!/bin/bash
 
-podman build -t sputnik:latest .
-podman images | grep "localhost/sputnik"
+#
+# Build image for this application..
+#
+
+DOCKERFILE="Dockerfile.ubi7"
+podman build -f "$DOCKERFILE" -t localhost/sputnik:latest .

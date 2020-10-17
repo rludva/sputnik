@@ -1,0 +1,15 @@
+FROM alpine:3.4
+MAINTAINER Radomir Ludva
+RUN apk --no-cache add bash go bzr git openssh-client ca-certificates
+
+RUN mkdir -p /go/src /go/bin /repository && chmod -R 777 /go
+ENV GOPATH /go
+ENV PATH /go/bin:$PATH
+RUN cd /repository && \
+    git clone https://github.com/rludva/sputnik.git && \
+		cp -r ./sputnik/src/* /go/src 
+RUN cd /go/src && \
+    go build -o /go/bin/sputnik
+
+WORKDIR /go
+ENTRYPOINT /go/bin/sputnik
