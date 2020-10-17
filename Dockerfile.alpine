@@ -8,7 +8,7 @@ ENV PATH /go/bin:$PATH
 
 RUN cd /repository && \
     git clone https://github.com/rludva/sputnik.git && \
-		cp -r ./sputnik/src/* /go/src 
+    cp -r ./sputnik/src/* /go/src 
 
 RUN cd /go/src && \
     go build -o /go/bin/sputnik
