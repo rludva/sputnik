@@ -9,7 +9,21 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "%s", bot.Bot("ping"))
+  question := r.URL.Path[1:]
+	answer := bot.Bot(question)
+	content := `
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Simple bot..</title>
+	</head>
+	<body>
+		<h1>SimpleBot</h1>
+		<p>Answer: <span style="font-style: italic;">%v</span></p>
+	</body>
+	</html>
+	`
+	fmt.Fprintf(w, content, answer)
 }
 
 func main() {
