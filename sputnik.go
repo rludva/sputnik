@@ -5,11 +5,11 @@ import (
 	"log"
 	"net/http"
 
-	"bot"
+	"github.com/rludva/sputnik/src/bot"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-  question := r.URL.Path[1:]
+	question := r.URL.Path[1:]
 	answer := bot.Bot(question)
 	content := `
 	<!DOCTYPE html>
