@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "sputnik"
+  labels:
+    app.kubernetes.io/name: sputnik
+    foo: "bar"
+spec:
+  containers:
+  - image: "quay.io/rludva/sputnik:latest"
+    name: "sputnik"
+    ports:                              
+    - containerPort: 8080
+      protocol: TCP
+    resources:
+      request:
+        cpu: 200m
+        memory: 1Gi
+      limits:
+        cpu: 200m
+        memory: 1Gi
+    
