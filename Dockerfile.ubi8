@@ -1,0 +1,9 @@
+FROM registry.redhat.io/ubi8/go-toolset
+LABEL maintainer="Radomir Ludva"
+
+EXPOSE 8080
+	
+RUN git clone https://github.com/rludva/sputnik.git && cd /opt/app-root/src/sputnik && /usr/bin/go build sputnik.go
+# In the ubi8/go-toolset the path to `go` is correctly set into /usr/bin/go finally!
+
+ENTRYPOINT /opt/app-root/src/sputnik/sputnik
