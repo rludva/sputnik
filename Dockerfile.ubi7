@@ -3,6 +3,7 @@ LABEL maintainer="Radomir Ludva"
 
 EXPOSE 8080
 	
-RUN git clone https://github.com/rludva/sputnik.git && cd /opt/app-root/src/sputnik && go build sputnik.go
+RUN git clone https://github.com/rludva/sputnik.git && cd /opt/app-root/src/sputnik && /opt/rh/go-toolset-1.19/root/usr/bin/go build sputnik.go
+# It is not clear here why the absult path must contain the version to go-toolset, because after upgrade of the go-toolset this fails with the different path!
 
 ENTRYPOINT /opt/app-root/src/sputnik/sputnik
