@@ -9,6 +9,9 @@ spec:
   containers:
   - image: "quay.io/rludva/sputnik:1.03"
     name: "sputnik"
+    securityContext:
+      seccompProfile:
+        type: RuntimeDefault
     ports:                              
     - containerPort: 8080
       protocol: TCP
@@ -19,5 +22,3 @@ spec:
       limits:
         cpu: 200m
         memory: 1Gi
-    securityContext:
-      allowPrivilegeEscalation: false
