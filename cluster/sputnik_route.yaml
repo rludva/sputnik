@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: sputnik
+  namespace: sproject
+spec:
+  host: sputnik.apps.atemi.nutius.com
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: sputnik
+    weight: 100
+  wildcardPolicy: None
